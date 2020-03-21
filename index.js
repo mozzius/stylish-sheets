@@ -1,3 +1,3 @@
-import useStyle from './useStyle';
+import useStyle from './src/useStyle';
 
 export default useStyle;
