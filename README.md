@@ -2,12 +2,14 @@
 
 A better CSS-in-JS solution for React
 
-- Super lightweight (492b gzipped!)
-- Simple API (CSS -> classnames via a hook)
+- Super lightweight, only one dependency
+- Simple API (CSS to classnames via a React hook)
 
 ## Installation
 
-> Not an npm package yet
+```
+yarn add stylish-sheets
+```
 
 ## Example
 
@@ -15,15 +17,11 @@ A better CSS-in-JS solution for React
 import React, { useState } from 'react';
 import useStyle from 'stylish-sheets';
 
-const App = () => {
+const Title = () => {
     const [toggle, setToggle] = useState(true);
     const classes = useStyle`
-    p {
+    .title {
         color: ${toggle ? 'red' : 'blue'};
-        font-family: sans-serif;
-    }
-
-    .big {
         font-weight: bold;
         font-size: 25px;
     }
@@ -31,7 +29,7 @@ const App = () => {
 
     return (
         <p
-            className={classes('big')}
+            className={classes('title')}
             onClick={() => setToggle(t => !t)}
         >
             Hello World!
