@@ -1,5 +1,6 @@
-import { useState, useLayoutEffect, useRef } from 'react';
+import { useState, useLayoutEffect, useRef, useContext } from 'react';
 import stylis from 'stylis';
+import ThemeContext from './theme';
 
 const createId = () => {
     const randLetter = () => {
@@ -13,6 +14,7 @@ const createId = () => {
 
 const useStyle = (styles, ...funcs) => {
     const [id, setId] = useState();
+    const theme = useContext(ThemeContext);
     const sheetRef = useRef();
 
     useLayoutEffect(() => {
@@ -41,8 +43,8 @@ const useStyle = (styles, ...funcs) => {
                     let interp = funcs.shift();
                     // could just be a normal element
                     if (typeof interp === 'function') {
-                        // TODO: themes using context
-                        return complete + line + interp(/* theme obj goes here */);
+                        // pass theme to function
+                        return complete + line + interp(theme);
                     } else {
                         return complete + line + interp;
                     }
@@ -70,7 +72,7 @@ const useStyle = (styles, ...funcs) => {
                 sheetRef.current.appendChild(document.createTextNode(stylisOutput));
             }
         }
-    }, [styles, funcs, id])
+    }, [styles, funcs, id, theme])
 
     return (...names) => names.filter(Boolean).map(name => `${id}-${name}`).join(' ');
 }
