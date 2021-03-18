@@ -8,7 +8,7 @@ A better CSS-in-JS solution for React
 
 ## Installation
 
-```
+```bash
 yarn add stylish-sheets
 ```
 
@@ -17,28 +17,25 @@ yarn add stylish-sheets
 ### Simple component
 
 ```javascript
-import React, { useState } from 'react';
-import useStyle from 'stylish-sheets';
+import React, { useState } from "react";
+import useStyle from "stylish-sheets";
 
 export const Title = () => {
-    const [toggle, setToggle] = useState(true);
-    const classes = useStyle`
+  const [toggle, setToggle] = useState(true);
+  const classes = useStyle`
     .title {
-        color: ${toggle ? 'red' : 'blue'};
-        font-weight: bold;
-        font-size: 25px;
+      color: ${toggle ? "red" : "blue"};
+      font-weight: bold;
+      font-size: 25px;
     }
-    `;
+  `;
 
-    return (
-        <h1
-            className={classes('title')}
-            onClick={() => setToggle(t => !t)}
-        >
-            Hello World!
-        </h1>
-    );
-}
+  return (
+    <h1 className={classes("title")} onClick={() => setToggle((t) => !t)}>
+      Hello World!
+    </h1>
+  );
+};
 ```
 
 ### Themes
@@ -48,24 +45,20 @@ If you pass `useStyle` a function, it will pass it a theme object that is stored
 In this example, we get the color of the title from the theme that is set using `ThemeProvider`.
 
 ```javascript
-import React from 'react';
-import useStyle from 'stylish-sheets';
+import React from "react";
+import useStyle from "stylish-sheets";
 
 export const Title = () => {
-    const classes = useStyle`
+  const classes = useStyle`
     .title {
-        color: ${theme => theme.color};
-        font-weight: bold;
-        font-size: 25px;
+      color: ${(theme) => theme.color};
+      font-weight: bold;
+      font-size: 25px;
     }
-    `;
+  `;
 
-    return (
-        <h1 className={classes('title')}>
-            Hello World!
-        </h1>
-    );
-}
+  return <h1 className={classes("title")}>Hello World!</h1>;
+};
 ```
 
 Then in some component higher up the tree:
