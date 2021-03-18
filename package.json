@@ -1,12 +1,12 @@
 {
   "name": "stylish-sheets",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A better CSS-in-JS solution",
   "main": "index.js",
   "author": "Samuel Newman",
   "license": "MIT",
   "dependencies": {
-    "stylis": "^3.5.4"
+    "stylis": "^4.0.7"
   },
   "peerDependencies": {
     "react": "^16.13.1"
