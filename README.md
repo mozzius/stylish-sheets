@@ -70,9 +70,9 @@ import { ThemeProvider } from 'stylish-sheets';
 import { Title } from './title';
 
 export const App = () => (
-    <ThemeProvider value={{ color: 'red' }}>
-        <Title>
-    </ThemeProvider>
+  <ThemeProvider value={{ color: 'red' }}>
+    <Title>
+  </ThemeProvider>
 )
 ```
 
